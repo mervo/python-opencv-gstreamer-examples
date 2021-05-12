@@ -1,3 +1,5 @@
+# docker build -t gstreamer-opencv:1.14.5-4.2.0 .
+# adapted from https://gist.github.com/corenel/a615b6f7eb5b5425aa49343a7b409200
 FROM nvidia/cuda:11.3.0-cudnn8-devel-ubuntu18.04
 
 ENV HOME="/home/"
