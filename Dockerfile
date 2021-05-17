@@ -88,9 +88,8 @@ RUN echo 'alias jup="jupyter notebook --allow-root --no-browser"' >> ~/.bashrc
 WORKDIR $HOME/gst-plugins-bad
 COPY ./gst-plugins-bad $HOME/gst-plugins-bad
 WORKDIR $HOME/gst-plugins-bad/
-RUN NVENCODE_CFLAGS="-I/home/gst-plugins-bad/sys/nvenc" ./autogen.sh --with-cuda-prefix="/usr/local/cuda" 
+RUN NVENCODE_CFLAGS="-I/home/gst-plugins-bad/sys/nvenc" NVENCODE_LIBS="-L/home/gst-plugins-bad/sys/nvenc" ./autogen.sh --with-cuda-prefix="/usr/local/cuda" 
 WORKDIR $HOME/gst-plugins-bad/sys/nvenc
 RUN make && cp .libs/libgstnvenc.so /usr/lib/x86_64-linux-gnu/gstreamer-1.0/
 WORKDIR $HOME/gst-plugins-bad/sys/nvdec
 RUN make && cp .libs/libgstnvdec.so /usr/lib/x86_64-linux-gnu/gstreamer-1.0/
-
